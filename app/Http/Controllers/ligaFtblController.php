@@ -112,7 +112,7 @@ class ligaFtblController extends Controller
             "local_score" =>'required | numeric',
             "visitor_team_name" =>'required | min:2 | max:50',
             "visitor_score" => 'required | numeric',
-            "status" => 'required | min:2 | max:20',
+            "status" => 'required',
 
             "aditional_info" => 'max:100'
         ]);

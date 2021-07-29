@@ -25,7 +25,7 @@ class CreateMatchesTable extends Migration
             $table -> integer ('local_score')->nullable();             
             $table -> string ('visitor_team_name', 50); 
             $table -> integer ('visitor_score')->nullable(); 
-            $table -> string ('status', 10);                           
+            $table -> string ('status', 20);                           
             $table -> text ('aditional_info')->nullable();
             $table -> unsignedBigInteger('user_id')->nullable(); //para cruzarlo con el usuario que lo tiene asignado.
             $table->foreign('user_id')->references ('id')->on('users')->onUpdate('cascade');

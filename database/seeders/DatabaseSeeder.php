@@ -61,6 +61,7 @@ class DatabaseSeeder extends Seeder
           $admin->assignRole('admin');
           $user1->assignRole('manager');
           $user2->assignRole('manager');
+          
         
         //---EQUIPOS 
         $equipo1 = new Team();

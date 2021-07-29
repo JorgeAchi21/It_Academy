@@ -92,23 +92,12 @@
           <br><small class="text-danger">*{{$message}}</small><br>
         @enderror
       </div>
-      <!--
-      <div class="form-group">
-        <label for="status">Status:  *(list)</label>
-        <input type="text" class="form-control" id="status" name="status"
-          value="{{old('status', $partido->status)}}">
-
-        @error('status') 
-          <br><small class="text-danger">*{{$message}}</small><br>
-        @enderror
-      </div>
-        -->
 
       <div class="form-group">
         <label for="match_status">Status:  (list select)</label>
         <select class="form-control" id="match_status" name="status">
           @foreach ($match_status as $item)
-              <option value="{{$item}}" {{($item==$partido->status)?'selected':''}}>
+              <option value="{{$item->value}}" {{($item==$partido->status)?'selected':''}}>
                 {{$item->value}}
               </option>
           @endforeach

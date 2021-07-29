@@ -19,7 +19,10 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         //Añadimos/registramos la policy
-        Match::class => ligaFutPolicy::class,
+
+        //Match::class => ligaFutPolicy::class,
+        'App\Models\Match' => 'App\Policies\ligaFutPolicy'
+        
     ];
 
     /**

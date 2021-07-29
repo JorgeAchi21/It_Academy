@@ -17,9 +17,19 @@ class ligaFutPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+    // El usuario admin tiene todos los derechos
+    public function before(User $user, $ability)
+    {
+        if ($user->hasRole('admin')) {
+            return true;
+        } 
+    }
+
     public function viewAny(User $user)
     {
-        return true;
+        return false;
+        
     }
 
     /**
@@ -31,7 +41,8 @@ class ligaFutPolicy
      */
     public function view(User $user, Match $match)
     {
-        return true;
+        //return false;
+        return $user->id == $match -> user_id;
     }
 
     /**

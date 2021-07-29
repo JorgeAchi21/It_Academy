@@ -96,7 +96,7 @@
         <label for="match_status">Status:  *(list select)</label>
         <select class="form-control" id="match_status" name="status">
           @foreach ($match_status as $item)
-              <option value="{{$item}}">
+              <option value="{{$item->value}}">
                 {{$item->value}}
               </option>
           @endforeach

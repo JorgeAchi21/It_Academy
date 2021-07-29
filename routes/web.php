@@ -24,7 +24,6 @@ Route::get('/', [ligaFtblController::class, 'home'])
     ->name('home');
 
 
-
 //TEAM----------------------------------------
 //Show
 /* Grupo de rutas protegidas por middleware auth
