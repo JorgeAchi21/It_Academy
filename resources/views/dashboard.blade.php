@@ -10,9 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     Welcome... {{auth()->user()->name}}<br>
-                    Your role is: {{Auth::user()->roles[0]->name}}  <br>
+                    <?php
+                    $role = Auth::user()->roles;
+                    $tam = sizeof($role);
+                    if ($tam == 0){
+                        echo ("Your role is: guest.");
+                    } else {
+                        $rol = Auth::user()->roles[0]->name;
+                        echo ("Your role is: " . $rol);
+                    }
+                    echo (" <br> ");
+                    ?>
                     You have logged in.
                 </div>
+
                 <div class="p-6 bg-white border-b border-gray-200">
                     <br>
                     <a href="{{route('home')}}" class="text-indigo-700">Regresar al home...</a>

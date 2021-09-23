@@ -147,11 +147,11 @@
                                         if (Auth::check()) {
                                             $usuario=Cookie::get('usuario');
                                             $rol = Cookie::get('rol');
-                                            echo "$usuario";
+                                            echo ":" + $usuario;
                                             //echo "User: $usuario - rol: $rol";
                                     
                                         } else {
-                                            echo "NO Login :-(";
+                                            echo "NO Login: guest :-(";
                                         }
                                         ?>
                                     </a>
@@ -169,6 +169,7 @@
                                                 <a href="#">
                                                     User name:
                                                     <?php
+
                                                         if (Auth::check()) {
                                                             $usuario=Cookie::get('usuario');
                                                             echo " $usuario";
@@ -176,6 +177,7 @@
                                                         } else {
                                                             echo "NO Login";
                                                         }
+
                                                     ?>
                                                 </a>
                                             </h5>

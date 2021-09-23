@@ -34,9 +34,25 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-         //Obtener nombre de usuario y rol
+        //Obtener nombre de usuario y rol
+        //Borrar cookies anteriores
+        $cookie = Cookie::forget('usuario');
+        $cookie = Cookie::forget('rol');
+        $usuario="";
+        $rol="";
+        $role="";
+        //Controla si no tiene rol asignado
         $usuario = auth()->user()->name;
-        $rol = Auth::user()->roles[0]->name;
+        $role = Auth::user()->roles;
+        $tam = sizeof($role);
+        if ($tam == 0){
+            $rol="guest";
+            //$rol = "XX";
+        } else {
+            //$rol = "nn";
+            $rol = Auth::user()->roles[0]->name;
+            $rol = $rol;
+        }
         $tmpCookie = 120;
 
         //guardando la cookie...

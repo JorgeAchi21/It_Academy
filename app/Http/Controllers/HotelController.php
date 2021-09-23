@@ -45,7 +45,7 @@ class HotelController extends Controller
     public function coolRoomsCreateStore(Request $request){
         //return $request->all(); //ok pasa los datos bien.
         $request->validate([
-            "room" => 'required |  numeric | min:10 | max:500',
+            "room" => 'required | unique:rooms,room| numeric | min:10 | max:500',
             "guests" => 'required | min:1 | max:6',
             "state" =>'required | min:2 | max:15', 
             "price" =>'required | min:1 | max:200'
@@ -64,7 +64,7 @@ class HotelController extends Controller
     public function coolRoomsEditStore(Request $request, $room){
         //return $request->all(); //ok pasa los datos bien.
         $request->validate([
-            "room" => 'required | numeric | min:10 | max:500',
+            "room" => 'required | unique:rooms,room |numeric | min:10 | max:500',
             "guests" => 'required | min:1 | max:10',
             "state" => 'min:1 | max:50',
             "guestName" => 'min:1 | max:50',

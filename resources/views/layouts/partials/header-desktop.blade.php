@@ -136,9 +136,10 @@
                                     use Illuminate\Support\Facades\Cookie;
                             
                                     if (Auth::check()) {
-                                        $usuario=Cookie::get('usuario');
+                                        $usuario = "";
+                                        $usuario = Cookie::get('usuario');
                                         $rol = Cookie::get('rol');
-                                        echo "$usuario";
+                                        echo "-" . $usuario . "-:" . $rol . "-";
                                         //echo "User: $usuario - rol: $rol";
                                 
                                     } else {
