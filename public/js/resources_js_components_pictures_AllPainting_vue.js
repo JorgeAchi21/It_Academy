@@ -60,16 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'IndexShops',
   data: function data() {
@@ -83,26 +73,6 @@ __webpack_require__.r(__webpack_exports__);
         //     entry_date: '2021-01-01',
         //     url: './img/c021.jpg',
         //     comment: 'lorem ipsum 1'
-        // },
-        // {
-        //     id: 2,
-        //     author: 'author 2',
-        //     picture_name: 'picture_name 2',
-        //     shop_id: '2',
-        //     price: 102,
-        //     entry_date: '2021-01-02',
-        //     url: './img/c022.jpg',
-        //     comment: 'lorem ipsum 2'
-        // },
-        // {
-        //     id: 3,
-        //     author: 'author 3',
-        //     picture_name: 'picture_name 3',
-        //     shop_id: '3',
-        //     price: 103,
-        //     entry_date: '2021-01-03',
-        //     url: './img/c021.jpg',
-        //     comment: 'lorem ipsum 3'
         // }
       ]
     };
@@ -121,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.defaults.headers.common = {
         Authorization: "Bearer " + localStorage.getItem("LoginToken")
-      }; //llamada a la api para añadir datos
+      }; //llamada a la api para solicitar datos
 
       axios.get('/api/show/picture/').then(function (response) {
         //evento al array de datos
@@ -219,82 +189,92 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("all painting")]),
-    _vm._v(" "),
-    _c("section", { staticClass: "jumbotron text-center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "jumbotron-heading" }, [_vm._v("PICTURES:")]),
-        _vm._v(" "),
-        _c("p"),
-        _c("h6", [
-          _vm._v("Total picture number: " + _vm._s(_vm.paintings.length)),
+    _c("div", { staticClass: "jumbotron" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("section", { staticClass: "jumbotron text-center" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "jumbotron-heading" }, [_vm._v("PICTURES:")]),
+          _vm._v(" "),
+          _c("p"),
+          _c("h6", [
+            _vm._v("Total picture number: " + _vm._s(_vm.paintings.length)),
+          ]),
+          _c("p"),
         ]),
-        _c("p"),
-        _vm._v(" "),
-        _c("p"),
       ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "album py-5 bg-light" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          _vm._l(_vm.paintings, function (painting) {
-            return _c("div", { key: painting.id, staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "card mb-4 box-shadow" }, [
-                _c("img", {
-                  staticClass: "card-img-top cuaImg rounded mx-auto",
-                  attrs: { src: painting.url, alt: "Card image cap" },
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("p", { staticClass: "h6" }, [_vm._v("Title:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "album py-5 bg-light" }, [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.paintings, function (painting) {
+              return _c("div", { key: painting.id, staticClass: "col-md-4" }, [
+                _c("div", { staticClass: "card mb-4 box-shadow" }, [
+                  _c("img", {
+                    staticClass: "card-img-top cuaImg rounded mx-auto",
+                    attrs: { src: painting.url, alt: "Card image cap" },
+                  }),
                   _vm._v(" "),
-                  _c("p", { staticClass: "h5" }, [
-                    _c("strong", [_vm._v(_vm._s(painting.picture_name))]),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("p", { staticClass: "h6" }, [_vm._v("Title:")]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "h5" }, [
+                      _c("strong", [_vm._v(_vm._s(painting.picture_name))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "h6" }, [_vm._v("Author:")]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "h5" }, [
+                      _c("strong", [_vm._v(_vm._s(painting.author))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "h6 card-text" }, [
+                      _vm._v(_vm._s(painting.comment)),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "small" }, [
+                      _vm._v("Price: " + _vm._s(painting.price)),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "small" }, [
+                      _vm._v("Entry date: " + _vm._s(painting.entry_date)),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1, true),
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "h6" }, [_vm._v("Author:")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "h5" }, [
-                    _c("strong", [_vm._v(_vm._s(painting.author))]),
+                  _c("div", { staticClass: "card-footer" }, [
+                    _c("small", { staticClass: "text-muted small" }, [
+                      _vm._v("id: " + _vm._s(painting.id)),
+                    ]),
+                    _vm._v(" "),
+                    _c("small", { staticClass: "text-muted small" }, [
+                      _vm._v("Gallery: " + _vm._s(painting.shop_id)),
+                    ]),
                   ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "h6 card-text" }, [
-                    _vm._v(_vm._s(painting.comment)),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "small" }, [
-                    _vm._v("Price: " + _vm._s(painting.price)),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "small" }, [
-                    _vm._v("Entry date: " + _vm._s(painting.entry_date)),
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0, true),
                 ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-footer" }, [
-                  _c("small", { staticClass: "text-muted small" }, [
-                    _vm._v("id: " + _vm._s(painting.id)),
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "text-muted small" }, [
-                    _vm._v("Gallery: " + _vm._s(painting.shop_id)),
-                  ]),
-                ]),
-              ]),
-            ])
-          }),
-          0
-        ),
+              ])
+            }),
+            0
+          ),
+        ]),
       ]),
     ]),
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "text-primary text-center" }, [
+      _c("span", { staticClass: "font-weight-bold" }, [
+        _vm._v("All paintings:"),
+      ]),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

@@ -69,17 +69,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'IndexShops',
   data: function data() {
     return {
-      shops: [// {
+      shops: {// {
         //     id: 1,
         //     name: 'Galeria 1',
         //     address: 'bcn1',
@@ -90,20 +84,8 @@ __webpack_require__.r(__webpack_exports__);
         //     name: 'Galeria 2',
         //     address: 'bcn2',
         //     max_capacity: '22'
-        // },
-        // {
-        //     id: 3,
-        //     name: 'Galeria 3',
-        //     address: 'bcn3',
-        //     max_capacity: '23'
-        // },
-        // {
-        //     id: 4,
-        //     name: 'Galeria 4',
-        //     address: 'bcn4',
-        //     max_capacity: '24'
         // }
-      ]
+      }
     };
   },
   mounted: function mounted() {
@@ -112,9 +94,6 @@ __webpack_require__.r(__webpack_exports__);
     this.showShops();
   },
   methods: {
-    deleteProduct: function deleteProduct(productId) {
-      alert(productId);
-    },
     showShops: function showShops() {
       var _this = this;
 
@@ -126,10 +105,28 @@ __webpack_require__.r(__webpack_exports__);
       }; //llamada a la api para añadir datos
 
       axios.get('/api/shops/').then(function (response) {
-        // axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
         //evento al array de datos
-        console.log(response.data);
-        _this.shops = response.data.shops;
+        console.log(response.data); //mostrar info retornada.
+
+        _this.shops = response.data.shops; //listar galerias
+      });
+    },
+    deleteShop: function deleteShop(delId) {
+      var _this2 = this;
+
+      // console.log(this.product, ':D');
+      console.log('Borrado shop :-D' + delId);
+      var urlSend = '/api/shops/delete/' + delId;
+      console.log("url: " + urlSend); //añadir token a la peticion
+
+      axios.defaults.headers.common = {
+        Authorization: "Bearer " + localStorage.getItem("LoginToken")
+      }; //llamada a la api para añadir datos
+
+      axios.post(urlSend).then(function (response) {
+        console.log(response.data.shops); //mostrar info retornada.
+
+        _this2.shops = response.data.shops; //actuliar las galerias
       });
     }
   }
@@ -264,21 +261,61 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "\n                            Show\n                        "
-                ),
-              ]),
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: {
+                        to: { name: "ShowShop", params: { id: shop.id } },
+                      },
+                    },
+                    [_vm._v("Detail")]
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-info",
+                      attrs: {
+                        to: { name: "EditShop", params: { id: shop.id } },
+                      },
+                    },
+                    [_vm._v("Edit")]
+                  ),
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("td", [
-                _vm._v(
-                  "\n                            Edit\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "\n                            Delete\n                            "
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function ($event) {
+                        $event.preventDefault()
+                        return _vm.deleteShop(shop.id)
+                      },
+                    },
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                      },
+                      [_vm._v("Delete")]
+                    ),
+                  ]
                 ),
               ]),
             ])

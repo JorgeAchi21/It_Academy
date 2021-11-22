@@ -1,26 +1,23 @@
 <template>
     <div>
-        <h1>Create shop</h1>
-        <form v-on:submit.prevent="addShop()">
-
-            <div class="form-group">
-                <label for="name">Gallery name:</label>
-                <input type="text" class="form-control" id="name" v-model="shop.name">
-            </div>
-
-            <div class="form-group">
-                <label for="description">Address:</label>
-                <input type="text" class="form-control" id="description" v-model="shop.address">
-            </div>
-
-            <div class="form-group">
-                <label for="price">Max capacity:</label>
-                <input type="text" class="form-control" id="price"  v-model="shop.max_capacity">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <br>{{ product }}
-        </form>
+        <div class="jumbotron">
+            <h1 class="text-primary text-center"><span class="font-weight-bold">Create</span> gallery:</h1>
+            <form v-on:submit.prevent="addShop()">
+                <div class="form-group">
+                    <label for="name">Gallery name:</label>
+                    <input type="text" class="form-control" id="name" v-model="shop.name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Address:</label>
+                    <input type="text" class="form-control" id="description" v-model="shop.address">
+                </div>
+                <div class="form-group">
+                    <label for="price">Max capacity:</label>
+                    <input type="text" class="form-control" id="price"  v-model="shop.max_capacity">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -37,7 +34,7 @@ export default {
     },
     methods: {
         addShop() {
-            // console.log(this.product, ':D');
+            console.log("Entra en create shop..");
 
             //añadir token a la peticion
             axios.defaults.headers.common = {
@@ -46,11 +43,9 @@ export default {
             //llamada a la api para añadir datos
             axios.post('/api/shops', this.shop).then((response) => {
                 //evento al padre
-                this.$emit('add', response.data.shop);
-                this.$route.push({ name: 'Home'}); //redireccion a pagina index
-                // ojo con las validaciones
-                // ??como obtener los errores 
-
+                //this.$emit('add', response.data.shop);
+                
+                this.$router.push( { name: 'IndexShop'} ); //redireccion al indexshop
             })
         }
     }

@@ -9,6 +9,7 @@ const LogoutV = () => import('./components/security/LogoutV.vue');
 
 /* === SHOPS === */
 const IndexShop = () => import('./components/shop/Index.vue');
+const showShop = () => import('./components/shop/Show.vue');
 const CreateShop = () => import('./components/shop/Create.vue');
 const EditShop = () => import('./components/shop/EditShop.vue');
 const BurnDownShop = () => import('./components/shop/BurnDown.vue');
@@ -55,6 +56,11 @@ export const routes = [
         path: '/IndexShop',
         component: IndexShop
     },
+    {
+        name: 'ShowShop',
+        path: '/show',
+        component: showShop
+    },
     //create
     {
         name: 'CreateShop',
@@ -64,7 +70,7 @@ export const routes = [
     //edit
     {
         name: 'EditShop',
-        path: '/EditShop',
+        path: '/EditShop/:id',
         component: EditShop
     },
     //Delete

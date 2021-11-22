@@ -42,41 +42,55 @@ Route::middleware('auth:api')->group(function() {
     ->name('PassportPruebas');
 
     // === === === TIENDAS/GALERIAS
-    //crear tienda
-    Route::post('/shops/', [WCApiController::class, 'createShops'])
-    ->name ('shops.create');
-
-    //borrar tienda
-    Route::post('/shops/delete/{id}/', [WCApiController::class, 'deleteShops'])
-    ->name ('shops.delete');
-
-    //editar tienda
-    Route::post('/shops/edit/{id}/', [WCApiController::class, 'updateShops'])
-    ->name ('shops.edit');
-
     //listar tiendas
     Route::get('/shops/', [WCApiController::class, 'viewShops'])
     ->name ('shops.view');
+    
+    //info una tienda
+    Route::get('/shops/info/{id}', [WCApiController::class, 'viewIdShops'])
+    ->name ('shops.viewId');
+
+    //editar tienda
+    Route::put('/shops/edit/{id}/', [WCApiController::class, 'updateShops'])
+    ->name ('shops.editId');
+
+    //crear tienda
+    Route::post('/shops/', [WCApiController::class, 'createShops'])
+    ->name ('shops.create');
+    
+    // Ver detalles.
+    Route::post('/shops/{id}/', [WCApiController::class, 'detailShops'])
+    ->name ('shops.detail');
+
+    //Burn down Shop
+    Route::delete('/shops/delete/{id}', [WCApiController::class, 'deleteShops'])
+    ->name ('shops.delete');
+    
 
 
     // === === === CUADROS
-    //Añadir cuadro
-    Route::post('/shops/{id}/pictures/', [WCApiController::class, 'addPicture'])
-    ->name ('picture.create');
-    
     //Listar cuadros de una tienda
     Route::get('/shops/{id}/pictures/', [WCApiController::class, 'viewPictureByShop'])
     ->name ('shop.pictureViewByShop');
-    
+
+    //Añadir cuadro
+    Route::post('/shops/{id}/pictures/', [WCApiController::class, 'addPicture'])
+    ->name ('picture.create');
+        
     //Listar todos los cuadros
     Route::get('/show/picture/', [WCApiController::class, 'viewPictures'])
     ->name ('shop.pictureView');
 
-    //Burn out Shop
-    Route::delete('shops/{id}/pictures/', [WCApiController::class, 'destroy'])
-    ->name ('shop.destroy');
+    //borrar cuadros
+    Route::post('/show/picture/delete/{id}', [WCApiController::class, 'deletePicture'])
+    ->name ('picture.delete');
+    
+    //Burn down Shop
+    //Route::delete('shops/{id}/pictures/', [WCApiController::class, 'destroy'])
+    //->name ('shop.destroy');
 
     
+    //desloguearse
     Route::post('logout', [PassportController::class, 'logout'])
     ->name('PassportLogout');
 });

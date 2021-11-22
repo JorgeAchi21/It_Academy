@@ -50,9 +50,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'IndexShops',
   data: function data() {
@@ -68,25 +65,12 @@ __webpack_require__.r(__webpack_exports__);
         //     name: 'Galeria 2',
         //     address: 'bcn2',
         //     max_capacity: '22'
-        // },
-        // {
-        //     id: 3,
-        //     name: 'Galeria 3',
-        //     address: 'bcn3',
-        //     max_capacity: '23'
-        // },
-        // {
-        //     id: 4,
-        //     name: 'Galeria 4',
-        //     address: 'bcn4',
-        //     max_capacity: '24'
         // }
       ]
     };
   },
   mounted: function mounted() {
     //llama a la funcion cuando se carga el componente x inicializar.
-    // console.log('mounted... :D');
     this.showShops();
   },
   methods: {
@@ -100,8 +84,6 @@ __webpack_require__.r(__webpack_exports__);
       }; //llamada a la api para obtener shops
 
       axios.get('/api/shops/').then(function (response) {
-        // // axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
-        //evento al array de datos
         // console.log("Mostrar datos:")
         // console.log(response.data)
         _this.shops = response.data.shops;
@@ -197,52 +179,62 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("select a gallery ")]),
-    _vm._v(" "),
     _c("div", { staticClass: "jumbotron" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
+      _c("div", { staticClass: "jumbotron" }, [
         _vm._m(1),
         _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.shops, function (shop) {
-            return _c("tr", { key: shop.id }, [
-              _c("td", { staticClass: "text-white bg-secondary" }, [
-                _vm._v("\n              " + _vm._s(shop.id) + "\n            "),
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "\n              " + _vm._s(shop.name) + "\n            "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "\n              " + _vm._s(shop.address) + "\n            "
-                ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "td",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { to: "/PaintingByGallery/" + shop.id },
-                    },
-                    [_vm._v("Painting by Gallery")]
+        _c("table", { staticClass: "table" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.shops, function (shop) {
+              return _c("tr", { key: shop.id }, [
+                _c("td", { staticClass: "text-white bg-secondary" }, [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(shop.id) +
+                      "\n                "
                   ),
-                ],
-                1
-              ),
-            ])
-          }),
-          0
-        ),
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(shop.name) +
+                      "\n                "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(shop.address) +
+                      "\n                "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { to: "/PaintingByGallery/" + shop.id },
+                      },
+                      [_vm._v("Painting by Gallery")]
+                    ),
+                  ],
+                  1
+                ),
+              ])
+            }),
+            0
+          ),
+        ]),
       ]),
     ]),
   ])
@@ -252,9 +244,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "text-primary text-center" }, [
+      _c("span", { staticClass: "font-weight-bold" }, [_vm._v("Select")]),
+      _vm._v(" a gallery to show pictures:"),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-center h3 text-primary" }, [
-      _c("span", { staticClass: "font-weight-bold" }, [_vm._v("Select ")]),
-      _vm._v(" a gallery to show pictures"),
+      _c("span", { staticClass: "font-weight-bold" }, [_vm._v("Select... ")]),
     ])
   },
   function () {

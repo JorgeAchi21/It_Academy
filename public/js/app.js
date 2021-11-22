@@ -2145,11 +2145,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      LName: '',
+      LTokenC: '',
+      lnk_Reg: false,
+      lnk_Log: false,
+      lnk_LogOut: true
+    };
+  },
   mounted: function mounted() {
+    // this.lnk_Reg = true;
+    // this.lnk_Log = true;
+    // this.lnk_LogOut = true;
     if (localStorage.LoginUserName) {
       this.LName = localStorage.LoginUserName;
+      this.lnk_Reg = true;
+      this.lnk_Log = true;
+      this.lnk_LogOut = false;
     } else {
       this.LName = "Unknown/Desconocido.";
+      this.lnk_Reg = false;
+      this.lnk_Log = false;
+      this.lnk_LogOut = true;
     }
 
     if (localStorage.LoginToken) {
@@ -2160,11 +2178,21 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   updated: function updated() {
+    // this.lnk_Reg = true;
+    // this.lnk_Log = true;
+    // this.lnk_LogOut = true;
     //carga el usuario + token en la nav-bar
     if (localStorage.LoginUserName) {
       this.LName = localStorage.LoginUserName;
+      this.lnk_Reg = true;
+      this.lnk_Log = true;
+      this.lnk_LogOut = false;
     } else {
       this.LName = "Unknown/Desconocido.."; //"Unknown/Desconocido..";
+
+      this.lnk_Reg = false;
+      this.lnk_Log = false;
+      this.lnk_LogOut = true;
     }
 
     if (localStorage.LoginToken) {
@@ -2289,6 +2317,10 @@ var IndexShop = function IndexShop() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_shop_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shop/Index.vue */ "./resources/js/components/shop/Index.vue"));
 };
 
+var showShop = function showShop() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_shop_Show_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shop/Show.vue */ "./resources/js/components/shop/Show.vue"));
+};
+
 var CreateShop = function CreateShop() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_shop_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shop/Create.vue */ "./resources/js/components/shop/Create.vue"));
 };
@@ -2345,6 +2377,10 @@ var routes = [{
   name: 'IndexShop',
   path: '/IndexShop',
   component: IndexShop
+}, {
+  name: 'ShowShop',
+  path: '/show',
+  component: showShop
 }, //create
 {
   name: 'CreateShop',
@@ -2353,7 +2389,7 @@ var routes = [{
 }, //edit
 {
   name: 'EditShop',
-  path: '/EditShop',
+  path: '/EditShop/:id',
   component: EditShop
 }, //Delete
 {
@@ -19978,6 +20014,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_Reg },
                             attrs: { to: { name: "Register" } },
                           },
                           [_vm._v("Register")]
@@ -19987,6 +20024,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_Log },
                             attrs: { to: { name: "Login" } },
                           },
                           [_vm._v("Login")]
@@ -19996,6 +20034,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "LogoutV" } },
                           },
                           [_vm._v("Logout")]
@@ -20036,6 +20075,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "IndexShop" } },
                           },
                           [_vm._v("View galleries")]
@@ -20045,6 +20085,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "CreateShop" } },
                           },
                           [_vm._v("Add a gallery")]
@@ -20054,6 +20095,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "BurnDownShop" } },
                           },
                           [_vm._v("Burn down a gallery")]
@@ -20094,6 +20136,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "SelectAGallery" } },
                           },
                           [_vm._v("Painting by Gallery")]
@@ -20103,6 +20146,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "AllPainting" } },
                           },
                           [_vm._v("All painting")]
@@ -20112,6 +20156,7 @@ var render = function () {
                           "router-link",
                           {
                             staticClass: "dropdown-item",
+                            class: { disabled: _vm.lnk_LogOut },
                             attrs: { to: { name: "CreatePainting" } },
                           },
                           [_vm._v("Add a painting")]
@@ -20124,7 +20169,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("span", { staticClass: "navbar-text" }, [
                   _vm._v(
-                    "\n                       Usuario: " +
+                    "\n                    = Usuario: " +
                       _vm._s(_vm.LName) +
                       " - " +
                       _vm._s(_vm.LTokenC) +
@@ -35617,7 +35662,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_security_Register_vue":1,"resources_js_components_security_Login_vue":1,"resources_js_components_security_LogoutV_vue":1,"resources_js_components_shop_Index_vue":1,"resources_js_components_shop_Create_vue":1,"resources_js_components_shop_EditShop_vue":1,"resources_js_components_shop_BurnDown_vue":1,"resources_js_components_pictures_SelectAGallery_vue":1,"resources_js_components_pictures_PaintingByGallery_vue":1,"resources_js_components_pictures_AllPainting_vue":1,"resources_js_components_pictures_Create_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_security_Register_vue":1,"resources_js_components_security_Login_vue":1,"resources_js_components_security_LogoutV_vue":1,"resources_js_components_shop_Index_vue":1,"resources_js_components_shop_Show_vue":1,"resources_js_components_shop_Create_vue":1,"resources_js_components_shop_EditShop_vue":1,"resources_js_components_shop_BurnDown_vue":1,"resources_js_components_pictures_SelectAGallery_vue":1,"resources_js_components_pictures_PaintingByGallery_vue":1,"resources_js_components_pictures_AllPainting_vue":1,"resources_js_components_pictures_Create_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

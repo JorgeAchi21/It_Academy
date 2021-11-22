@@ -30,9 +30,9 @@
                                 Security:
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <router-link class="dropdown-item" :to='{name: "Register"}'>Register</router-link>
-                                <router-link class="dropdown-item" :to='{name: "Login"}'>Login</router-link>
-                                <router-link class="dropdown-item" :to='{name: "LogoutV"}'>Logout</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_Reg }" :to='{name: "Register"}'>Register</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_Log }" :to='{name: "Login"}'>Login</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "LogoutV"}'>Logout</router-link>
                             </div>
                         </li>
 
@@ -42,9 +42,9 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <router-link class="dropdown-item" :to='{name: "IndexShop"}'>View galleries</router-link>
-                                <router-link class="dropdown-item" :to='{name: "CreateShop"}'>Add a gallery</router-link>
-                                <router-link class="dropdown-item" :to='{name: "BurnDownShop"}'>Burn down a gallery</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "IndexShop"}'>View galleries</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "CreateShop"}'>Add a gallery</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "BurnDownShop"}'>Burn down a gallery</router-link>
                             </div>
 
                         </li>
@@ -55,16 +55,16 @@
                             </a>
                             
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <router-link class="dropdown-item" :to='{name: "SelectAGallery"}'>Painting by Gallery</router-link>
-                                <router-link class="dropdown-item" :to='{name: "AllPainting"}'>All painting</router-link>
-                                <router-link class="dropdown-item" :to='{name: "CreatePainting"}'>Add a painting</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "SelectAGallery"}'>Painting by Gallery</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "AllPainting"}'>All painting</router-link>
+                                <router-link class="dropdown-item" :class="{disabled: lnk_LogOut }" :to='{name: "CreatePainting"}'>Add a painting</router-link>
                             </div>
 
                         </li>
                     </ul>
 
                     <span class="navbar-text">
-                           Usuario: {{ LName }} - {{ LTokenC }}
+                        = Usuario: {{ LName }} - {{ LTokenC }}
                     </span>
 
                 </div>
@@ -80,11 +80,31 @@
 <script>
 export default
 {
+    data() {
+        return {
+        LName: '',
+        LTokenC: '',
+
+        lnk_Reg: false,
+        lnk_Log: false,
+        lnk_LogOut: true
+        } 
+    },
     mounted() {
+        // this.lnk_Reg = true;
+        // this.lnk_Log = true;
+        // this.lnk_LogOut = true;
+
         if (localStorage.LoginUserName) {
             this.LName = localStorage.LoginUserName;
+            this.lnk_Reg = true;
+            this.lnk_Log = true;
+            this.lnk_LogOut = false;
         } else {
             this.LName = "Unknown/Desconocido.";
+            this.lnk_Reg = false;
+            this.lnk_Log = false;
+            this.lnk_LogOut = true;
         }
 
         if (localStorage.LoginToken) {
@@ -93,14 +113,25 @@ export default
         } else {
             this.LTokenC = "x";
         }
+
     },
     updated(){
+        // this.lnk_Reg = true;
+        // this.lnk_Log = true;
+        // this.lnk_LogOut = true;
+
         //carga el usuario + token en la nav-bar
         if (localStorage.LoginUserName) {
             this.LName = localStorage.LoginUserName;
+            this.lnk_Reg = true;
+            this.lnk_Log = true;
+            this.lnk_LogOut = false;
         } else {
             this.LName = "Unknown/Desconocido..";
             //"Unknown/Desconocido..";
+            this.lnk_Reg = false;
+            this.lnk_Log = false;
+            this.lnk_LogOut = true;
         }
         if (localStorage.LoginToken) {
             this.LToken = localStorage.LoginToken;

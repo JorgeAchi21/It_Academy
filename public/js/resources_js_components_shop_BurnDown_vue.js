@@ -34,13 +34,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'IndexShops',
   data: function data() {
@@ -56,21 +49,11 @@ __webpack_require__.r(__webpack_exports__);
         //     name: 'Galeria 2',
         //     address: 'bcn2',
         //     max_capacity: '22'
-        // },
-        // {
-        //     id: 3,
-        //     name: 'Galeria 3',
-        //     address: 'bcn3',
-        //     max_capacity: '23'
-        // },
-        // {
-        //     id: 4,
-        //     name: 'Galeria 4',
-        //     address: 'bcn4',
-        //     max_capacity: '24'
         // }
       ],
-      selected: ''
+      pos: '',
+      selected: '',
+      selectedIndex: ''
     };
   },
   mounted: function mounted() {
@@ -82,40 +65,106 @@ __webpack_require__.r(__webpack_exports__);
     BurnDown: function BurnDown() {
       var _this = this;
 
-      var url = '/api/shops/' + this.selected + '/pictures';
-      alert(url); //añadir token a la peticion
+      console.log("Borrando galeria...");
+      console.log("-----");
+      var url = '/api/shops/delete/' + this.selected;
+      console.log("url delete: " + url); //--------------------------------------------
+      // obtener el id del registro
+      // === no funciona ya que no es un array, es un objeto.
+
+      console.log("-----obtener mal:");
+      var idSlect = this.shops.indexOf(this.selected);
+      console.log("id select: " + idSlect);
+      console.log("Pos id: " + this.shops[0].id);
+      console.log('id select: ' + idSlect);
+      console.log("-----");
+      console.log("--- Listar Las propiedades ---");
+      var propName = "";
+
+      for (propName in this.shops) {
+        console.log("Nombre: " + propName); //nombre de la propiedad
+
+        console.log("valor id:" + this.shops[propName].id); //valor de la propiedad
+
+        console.log("valor nombre:" + this.shops[propName].name); //valor de la propiedad
+      } //
+
+
+      console.log("----");
+      this.selectedIndex = this.shops.indexOf(this.selected); //this.selectedIndex = this.shops.indexOf(1);
+      //console.log (Object.keyOf(this.shops))
+
+      console.log("Tamaño :" + this.shops.length); //console.log ("Pos arr: " + this.selectedIndex);
+      //console.log ("tipo de objeto: " + Object.typeof(this.shops));
+      //console.log ("id select: " + id);
+      //--------------------------------------------
+
+      console.log("---obtener id y nombre de la propiedad 5(hardcoded)");
+      console.log(this.shops[1].id);
+      console.log(this.shops[1].name);
+      console.log("--- --- ---"); //-----------codigo sugerido por Nancy
+
+      console.log("---Codigo sugerido: No");
+      var result = this.shops.filter(function (shops) {
+        return shops.id == _this.selected;
+      });
+      console.log("Var result: " + result);
+      console.log("---"); //-----------otro enfoque: no funciona
+
+      console.log("---Codigo sugerido: No");
+      var resultObj = "";
+      console.log("Result: " + resultObj.concat(Object.getOwnPropertyNames(this.shops)));
+      console.log("Var result: " + resultObj);
+      console.log("Result: " + Object.values(this.shops));
+      console.log("---"); //-----------otro enfoque: SI funciona
+      //-----------recorrer el array de objetos.
+      //-----------
+
+      console.log("---Codigo funciona:");
+      var salida = "";
+      var obj = this.shops;
+      var id = this.selected;
+      var key = "";
+
+      for (key in obj) {
+        var value = this.shops[key].id;
+
+        if (value == id) {
+          salida = key;
+        }
+      }
+
+      console.log("Salida: " + salida);
+      console.log("---Borramos elemento en list/select:"); //delete this.shops[salida];
+
+      this.$delete(this.shops, salida);
+      console.log("---"); //añadir token a la peticion
 
       axios.defaults.headers.common = {
         Authorization: "Bearer " + localStorage.getItem("LoginToken")
       };
       axios["delete"](url).then(function (response) {
-        console.log(response);
+        //se puede escoger entre redireccion o recarga dentro del mismo formulario.
+        _this.shops = response.data.shops; // recarga de datos
+        //this.$router.push({ name: 'IndexShop'}); //redireccion a pagina index
 
-        var pos = _this.products.map(function (product) {
-          return product.id;
-        }).indexOf(productId); //map=crea un nuevo array, indexof= retorna la posicin del elemento
-
-
-        _this.products.splice(pos, 1); //quita un elemento del array
-        //refrescar el navegador ??
-
+        alert("El elemento seleccionado id:" + _this.selected + " ha sido eleminado.");
+        console.log("--- fin carga burn-donw ---"); //return;
       });
     },
     showShops: function showShops() {
       var _this2 = this;
 
-      // console.log(this.product, ':D');
-      console.log('Entra en show products :D'); //añadir token a la peticion
+      console.log("Entra en burn down..");
+      console.log("Obtener listado de galerias..."); //añadir token a la peticion
 
       axios.defaults.headers.common = {
         Authorization: "Bearer " + localStorage.getItem("LoginToken")
       }; //llamada a la api para añadir datos
 
       axios.get('/api/shops/').then(function (response) {
-        // axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
-        //evento al array de datos
-        console.log(response.data);
         _this2.shops = response.data.shops;
+        console.log("---fin carga---");
       });
     }
   }
@@ -209,6 +258,8 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "jumbotron" }, [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "form",
         {
@@ -221,7 +272,7 @@ var render = function () {
         },
         [
           _c("div", { staticClass: "form-group" }, [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "select",
@@ -251,12 +302,16 @@ var render = function () {
                   },
                 },
               },
-              _vm._l(_vm.shops, function (shop) {
+              _vm._l(_vm.shops, function (shop, index, key) {
                 return _c("option", { domProps: { value: shop.id } }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n                        - " +
+                      _vm._s(key) +
+                      " - " +
+                      _vm._s(index) +
+                      " = " +
                       _vm._s(shop.id) +
-                      " " +
+                      " : " +
                       _vm._s(shop.name) +
                       " \n                    "
                   ),
@@ -281,6 +336,15 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "text-primary text center" }, [
+      _c("span", { staticClass: "font-weight-bold" }, [_vm._v("Burn")]),
+      _vm._v(" Down:"),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

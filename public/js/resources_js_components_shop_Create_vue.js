@@ -34,9 +34,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -51,21 +48,18 @@ __webpack_require__.r(__webpack_exports__);
     addShop: function addShop() {
       var _this = this;
 
-      // console.log(this.product, ':D');
-      //añadir token a la peticion
+      console.log("Entra en create shop.."); //añadir token a la peticion
+
       axios.defaults.headers.common = {
         Authorization: "Bearer " + localStorage.getItem("LoginToken")
       }; //llamada a la api para añadir datos
 
       axios.post('/api/shops', this.shop).then(function (response) {
         //evento al padre
-        _this.$emit('add', response.data.shop);
-
-        _this.$route.push({
-          name: 'Home'
-        }); //redireccion a pagina index
-        // ojo con las validaciones
-        // ??como obtener los errores 
+        //this.$emit('add', response.data.shop);
+        _this.$router.push({
+          name: 'IndexShop'
+        }); //redireccion al indexshop
 
       });
     }
@@ -159,110 +153,121 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Create shop")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function ($event) {
-            $event.preventDefault()
-            return _vm.addShop()
+    _c("div", { staticClass: "jumbotron" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.addShop()
+            },
           },
         },
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Gallery name:")]),
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "name" } }, [_vm._v("Gallery name:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.shop.name,
+                  expression: "shop.name",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "name" },
+              domProps: { value: _vm.shop.name },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.shop, "name", $event.target.value)
+                },
+              },
+            }),
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.shop.name,
-                expression: "shop.name",
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "description" } }, [
+              _vm._v("Address:"),
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.shop.address,
+                  expression: "shop.address",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "description" },
+              domProps: { value: _vm.shop.address },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.shop, "address", $event.target.value)
+                },
               },
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", id: "name" },
-            domProps: { value: _vm.shop.name },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.shop, "name", $event.target.value)
-              },
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "description" } }, [_vm._v("Address:")]),
+            }),
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.shop.address,
-                expression: "shop.address",
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "price" } }, [_vm._v("Max capacity:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.shop.max_capacity,
+                  expression: "shop.max_capacity",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "price" },
+              domProps: { value: _vm.shop.max_capacity },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.shop, "max_capacity", $event.target.value)
+                },
               },
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", id: "description" },
-            domProps: { value: _vm.shop.address },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.shop, "address", $event.target.value)
-              },
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "price" } }, [_vm._v("Max capacity:")]),
+            }),
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.shop.max_capacity,
-                expression: "shop.max_capacity",
-              },
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", id: "price" },
-            domProps: { value: _vm.shop.max_capacity },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.shop, "max_capacity", $event.target.value)
-              },
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Submit")]
-        ),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(_vm._s(_vm.product) + "\n    "),
-      ]
-    ),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Submit")]
+          ),
+        ]
+      ),
+    ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "text-primary text-center" }, [
+      _c("span", { staticClass: "font-weight-bold" }, [_vm._v("Create")]),
+      _vm._v(" gallery:"),
+    ])
+  },
+]
 render._withStripped = true
 
 

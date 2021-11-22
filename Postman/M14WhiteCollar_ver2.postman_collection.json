@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "05066c70-adc4-40e8-9978-1bcb92e3c1da",
+		"name": "M14WhiteCollar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "00 Api-Home .",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Galeria Nueva",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Barcelona",
+							"type": "text"
+						},
+						{
+							"key": "max_capacity",
+							"value": "21",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/home",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "01 Api-Register .",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Maria3",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "maria3@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 Api-Login .",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "maria1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 Api-Logout .",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNjU2N2Y4N2FmMGY2YTJkY2E5M2I0ODMyNDZiNTk3NGRiNDNiOWVhZWQ4YjQyYjZkODJiZjhhZWE0Y2Y4YTNjNjk2OTFmMmY1OGY4NzhkM2QiLCJpYXQiOjE2MzYwMTcyOTIuNjA3MzU0LCJuYmYiOjE2MzYwMTcyOTIuNjA3MzU4LCJleHAiOjE2Njc1NTMyOTIuNTk4Mjg0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ZZoakNkRgTIWjdRsqc5TwIUPYsJyyIj_uSQzw4guhC5yORyc-bA42EtzIPd-l2Z3vItdtwDGRVbEybIsLtJmBydFoq2Etph5XKn2-gSDiXel3UpkUqIFPxghqNExoabeL4RFbvW2QTSjDqvWUuKQFCHS4or_C02vXmnwq18_1c9T4FdXZyEHb0MutXP6CoCTdefRsHlJISHAZPQ8sSFtiSbpeTpnZ8-3aroQAShG2YxGkOiXXNrsdO5aZkqCKyf94gGK_P00W9NN1d-8CQTR0ZOKURwD_ZjyFnSLr-7rRcnmmdaYZlecO2nheqgWH4iTRznWzrSrmHjWJLuhnmFbZ8ji6h0OpUL64tyAnsNK9Q5ZcrW5mHVPrlWqicctEoiZhqonMEMkTK9UEQnOsHfqyWqpLAlNM-Mepi9n13wvf_J8ouAC4mlvlWE1Q6-T0JxSWsj1OlxNa9RrszIVoD3yroChTUPYWfD5eALF_mstXuFCHx8GHiuw_AdlQrzSpR3x1btwsUxU42g16gJYU8bwO75kL2SxYYVGDltDu123H05-jI6WYZOYyeaEKVHUy4eGDNjmPsl9musUliaVobZC02-S6CFAtrELaBVL6ZLeNn4Nn9EaZdNeV_Jn5YvO7CO5H1m6VEuUrl_iupVpc5bHROCs9NJ7RjQbM9OjsSaqhqU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 Api-Post-Galeria-Crear",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNjI5YTg4OTE3MWQ2N2Y5ZWU1MWQ5YTU5ODc4YmI4NzFkM2M3ODIwMDdhOWU0Yzk5NGEwMTViYTY3ODFiMTkyMTcxMWQ0MTBhZmEzZmNkZmUiLCJpYXQiOjE2MzY5NjU1ODMuNTU0NTEsIm5iZiI6MTYzNjk2NTU4My41NTQ1MTYsImV4cCI6MTY2ODUwMTU4My41NDU2ODcsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.fj27c28XCJwEEOw6JsQp2Pjcb8nN0O4RVDUkdO8-nLHPJpr8JuxDGVNAxtBuoqlti9w_qnAMKuZT6dLft3JOQioDXppfmvow0tuopQxGTb9NSUllXZgEX9k50TIvItoT2H77tqZacVbdh4og_wNrzA3SpI7uZcqLEpRIVMnt4kO2nk_0kPQsJPimxNsoqZGIUCEFHzwlu5iqz4lRpYf1bCbvgBuqRPzQBjeuFBlMI85oicQyCcH6v_tnVyPxugzzds9uv4zdJU6-H8nKQJE56GCI2HeUqlkuBctajHM20FwmJyuRXFA3Lp9zRH8FvklDjYks6gwQX-xuvqpyT54qmMbbuXJ5CCA8touezcDe6WbT5dIiUcI9uIMlYuTFyROD2lKsKfvgIA0TLozgCyiA8eAQhxUTkETNIFbezLaWfNEOFTfm3smNaUTiIOmsFxTawULu-jTrQYaDLHATQ69DeWR2C6pQan0PmAZ2u_3OSqavPWV3fwijYfB2wVSzWRCE7iIoqKzCYLgyBuKyVEi7PFdN6snfHqCk0NhxAxY5Zv6Woq29ou4J3jxWNuucJ-aSo-AC4TdeYAA1IjFHrWxrB8AtqQPqNxE1-brK9kWlfpuSrsLSknacG9IRqFdqQEzn6nkHlq1W2v_hQNr0xYMJKcHpwRwKcgENuEPVfNzPr6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Galeria Nueva1",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Barcelona1",
+							"type": "text"
+						},
+						{
+							"key": "max_capacity",
+							"value": "22",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 Api-Put-Galeria-Edit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDgzMDQ4ZjQwN2QzZmQ3NTBiYWNlOWRiMDI1Y2ZkYTg1NDFhMmQyZTE4NDNiNmFkNjVjNmNhMjI0ZDg2NDQ2Nzg4ODgzNjIxOWIzNWFlM2UiLCJpYXQiOjE2MzcxODE4ODAuMTEyOTg3LCJuYmYiOjE2MzcxODE4ODAuMTEyOTkyLCJleHAiOjE2Njg3MTc4ODAuMTA0ODk0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.jVjZaVaJx854Praf9w3M70UIEpW05QnJ-eHBeLJOwK5qrS98hCfnPu-9GzT1U6wjCyp36jThtSVAFOtmbG8-g-iOCgGI7QMv8iZNlnBJ2S8pO5DywARrhW8bVq34bdT5YDaPDk3cx7kYk5yHN06Y1oyYxuLMPP2wW6zG6d7NvUQYNJcleZEr3AKkcRV9P54u-K8eCIUyqBZvu21L64a8SL1LV4uqpsUJHCbw_m0jqbx0bOLMpASimf_pCDeBzg43uc7K6wWWxZKkxP-YmtlwcOd20fRNd-WvLy6ODr-WptDwIyogs18cTr9PB0GRt5y3KI6d_DD4150vW7f6tZ2QBSavuC8MpxgrQjvSPKfYJWELfeK9VHEFuiAJHzvIGPCD1gXGM0GJaqzMh4bdpCXaMFaZgsuzmCYzbffsX1yBJESGERzx-GKKY6jnMud0zQLNYTqwWrCDeNblcIzXLRwEEs6NwWCJZlbKShEF48thCwwK_C89Z5SQo1yIG2i586mYPB5VPgxZTFb9kNViifeorThhI8lw3TDvJMZGZM2YJCxniRk3d_eAkXth72yjIcprhsjd_Yg0J5gtExWSOZPhkJ-Ai_ur2Hb0YxoIgoHT3ZOS3flNVeuz8upn34kR7krbS7JvdXSQFiW98Vk17ganhU5OuqO-j2COWgc2dDfrOG8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Galeria Nueva",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Barcelona",
+							"type": "text"
+						},
+						{
+							"key": "max_capacity",
+							"value": "99",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/edit/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"edit",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 Api-Post-Galeria-Borrar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMWVkMWFlMGFhNDBlN2M1M2FlMzk4MzgwM2I2ZjA1MmIyYTMwODQxMzc1NTBhODhiY2Q4MTQwM2VjYzkzZjM0Mzg0MzE4NWI1MzE3OTM0MTciLCJpYXQiOjE2MzY5NzUxNzAuMzcwNTM5LCJuYmYiOjE2MzY5NzUxNzAuMzcwNTQzLCJleHAiOjE2Njg1MTExNzAuMzY1NDg2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.cCc1BoIxB4T3RfynBG8H49qY4iG-DICol93s10UN8vAFC32V90iAiko7QzSU8qTKkkZdOzNWpRMMT6F0tUs95CT9fy_aKPmUoqftwyGfhOkMJFKASdkgEh4kuHcP2Ttzk-NMufxqmQr-Uv-J0dOo35QWKOP-qFBAvp0BP6fHbnAyl_U2CpgQjK4PgTxBwg1_XBhOwmzXuvWPo94_9vyBGoIcRGeRLdeUvpzHraKndnRNPpJp77JKRU4vIgvRNUhswFUlDiM6FSQk2YA_5L2obJaBc9GDw_Set-BgTJRvr5NfTSdLun00ja6Sn17JBRfePU52mV-yL1vG9nyEUl65L4H68iS5jqfCg4t9DpCHsD-TOe2ogEIoHSzMO_Lttyux0L2IVJYeZ_nw7FMGFbRjPvKLDqxg4C5pkbDbBI4qdri-ZKzT2CTd2FNijD1qhwN9XgQJt3dDOXqz5I7jPeqGctzx4TiEtElkAWy7hbJfdKH7uEcPOCtq0Z-_5_9KeIrkiofV_mj1frS-1rNZ5UrXdku2WGzA0uUiAhu6nyuUUaGbqCN6ori3YV_gEVSoS1tecGD2yvZe8Kcpk9NvDGaUFpa5JOpYDiHBu2mo6ZkhmWmzAUkoZlK092RNr89PoDHlDslHhU_9SSgb9JXFfRve8aXHXmMZk1msH4rCJ2asuIQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/delete/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 Api-Get-Galeria-Listar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGRhYTBmYWQ3ZTkzMTJlOTFhMTBlZWNjODEwZjQwODk3ZmQ1YWE4Yzc5ZDIxMTBlZmVkZjQzYzgxY2M1MGVjMzkyNTQ0ZjgzNDQ5MTdkZDUiLCJpYXQiOjE2MzcwODc3OTUuMTU5NzQsIm5iZiI6MTYzNzA4Nzc5NS4xNTk3NDYsImV4cCI6MTY2ODYyMzc5NS4xNTEsInN1YiI6IjQiLCJzY29wZXMiOltdfQ.F9v5Grwq3NgFhJdmwV8D1jrIYmoC6HVGKA-vbV3IV9T0Y0EsH66Gqg_L_IHJDdQVXg_2Plz8q94wRQ2Ju2eNgjAlsr8XDL4AMgsROEbc0BnE_VJwtw1aZ6vnPlgwUP3F3x2U55Vydb9f5xugXhrqFL_1boi40DuQD-0Q224mHfbk4FENZ5uzJ6wnHslDbvrJnSq_7R7Lqm96AsO4bB7r11ECCHurz2ThsUe40AUCypeKe8RMTVU6dZngHZF_O7wxVoPpQPgnRwfxsFluBWLaojVy8xAXsW5hlmD1VWxhD4Wr0hoSARuO7AL5Zq3Dw-KFVChp5N5ygQA3OWGeLDOqUew1AD-c0_OwBoY54kAwDCYDDTx8VIwoGuWp5LUTsQP7lkLYZHkpfp7PXY8kLObLGGXCmixlMKjdfsY8ifESYvFmz6WtkvRrZdwjnOlqYbg1uRtCGLgjlKIW2c_ZCRoGFqd9Go-Am9DyxFcaps0ZvuVZoHoILk0DdBAEVk9mawjJevr5leddcSJFtRMW8Pf1LlZaUJjd-qOFHa6tJ3KRUTOlMYS_teuGU7Ly2jnoK7tI38Sh72Jic1taB8Tk6luI1lym5QEReAGveSSXib_CoTh4bScjWLy3DUnlFH1x8mqs9FzDLRa-87yXXFMWVByfE5_EhfoZLsbEiKFNLuC6IzY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 Api-Get-Galeria-Info una tienda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWI2ZDQ2MmI3MDlkODE1YWMwZDA0MTI0OGI1OTgzNWVlMjA5NmJhNzc2ZDFmZTlkNGU2NmFkZDI0OTIyZTU3MjM0MTZlOTkzMGJmNWZmMTAiLCJpYXQiOjE2MzcxNzE4MzguMzYzNDI1LCJuYmYiOjE2MzcxNzE4MzguMzYzNDMxLCJleHAiOjE2Njg3MDc4MzguMzQ4MDg2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Sr3KBPG_okDJuSZnBh3lrktBhrO57J1u9OYbctNmDYEoEpDhr2H4UP6bcs7hfBFuE2ZVerXCXGQ2l0fz22BK8qk_FTWwd4TrmetF9oN32Q1ofZFUzzJvvqWZ3u_FKjxkE9hLUgR57ehj68iTknLR67QrPl-pTSkm_LRa0VvL1vRZ0kmHKASMn1mx6FNCiWtfA3Au4KbCnq0sCePgglI7JwAbgL79AcBVUatJhwer2TvKesVmmIZ1AjtmLUQz5gub6z54HWxF6-JzIOM5zj1yECG46Gc5y5YrDgGg0sepIuN0y2QH8kqisENNQzHqhzMR63-zrERmYT_Z7xjU_ckBf41xwJK294f88yMG1nbx6TleJA09QTotlq8GW6uX2FtD8iHp9ZXF82aY8pMR9r8VLSY_DJU1ag0eJCPMq6THcIFAdDTJN3YF_J6ekYq4ECojt761oo-njj4e0lL-PZtNKUDwBK9s-3n0BVy9dWHXFm5QDbkhIKO6g7ccp2oI6zSZYBi91_fNZ2EQo5tQzZR6NbcI0KRKlmlSs9IPo9RlbAE0AcZUpbD7z4dRvPa866EE9EDrN4Q7FkawEtcCiwXXCqIzNBB7kgZieZnEygZIDhpkkL1v7Oxc9PKYQy1dXFZzQhXfB-SOFnhMmwyYZff5dEUjKqTnsLWg9M3ujltaNdA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/info/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"info",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 Api-Post-Cuadro-Añadir",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZDlmMjgxZDMwNzk3YzRjOWVjNmQzYzRhYmFkZTg4ZDEzZDk2Y2I3NjYxMjEyZDgxZjcxNDJhYmRhYWVkZWQ1OWY2ZDBhMjg5ZTBhN2ZjZGYiLCJpYXQiOjE2MzY3NTU2MjEuODQ1MDkxLCJuYmYiOjE2MzY3NTU2MjEuODQ1MDk2LCJleHAiOjE2NjgyOTE2MjEuODM5MDY3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gqiMGsvga11s7AZ9x0RpQ1Y_41E16_n9VaBUUuJIh06OUZ79OgcEuLG0tTN6z6V6AyRNeyJ49Vlvx_7gUcZ5bcqrt0wW3QK5xYsV9GcbVmH_Z-q55vaj7-xY9N_w-0EUQ7ejmYrGUC4qNA6i2Pql6hE8LbVgo8luZ8mUf4K8gJjxU-lgh3b58U62witWJ_t_yaYhhqjiDkIJLObgZAO7D3A2dASRoSdu1bO7eM3s_S3L6fv1qmJ_jTuyYsOYGihVmDkB0n-Xt1LmlNSk7C5T3cwIoYF_xytpLD-sLvgOc0MarsR3P0WDJX2sbULWptWgQPxY6pGoiTOAXxqeyJUkEMLfYGetUp2FNy0nNBkEoHW73JwoXJlmgq-u49XQgX_kXt3TOAVarPgCVaK_bHHT-2eoRuqYmufzrezY8OB0H9_TR0kZpLYlMTcctme03HU1Fz7VPCEODc2lXoqjdRliRIzqoswgZn0rXcNiS9de09WZmc4w2J9XvBe1bbLD1V7J2jiNsyLBCTqDCYV0BDx1f93NwHpO-o1ez05zXh_ZPeGGA4Ym5Hh12c-0JsRekO0qh0_BvBvZPlL2pA6tq4rJZHeqxLNiZStntgmYE9T04KfndzBZoi3lcvw0ASybop0jJgMLOcW2picoIsU553szN8wgxvRNvzVnKeVIxItQZZs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "author",
+							"value": "Velazquezxxx1",
+							"type": "text"
+						},
+						{
+							"key": "picture_name",
+							"value": "La rendicion de Breda1",
+							"type": "text"
+						},
+						{
+							"key": "shop_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "entry_date",
+							"value": "2021-01-01",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "./img/c014.jpg",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "lorem ipsum",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/5/pictures",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"5",
+						"pictures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 Api-Post-Cuadro-Borrar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTkxZDA2ZTQzMjM1ODFjZjU1MGUzMmQzMjZlYzEyYmYxZGMyOWQ2MzJmOWE5NGU2MTBmNDE5NWMxZGFmNGM4NGQ5ZmNmMDFjZGNhMzVhNjkiLCJpYXQiOjE2MzcyMTQ5NDQuMjMzNzg4LCJuYmYiOjE2MzcyMTQ5NDQuMjMzNzkzLCJleHAiOjE2Njg3NTA5NDQuMjIzMjI3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ApfYk43jABqWq2HvhMla59eHAJKJ4ZVLewoL6BrLfUC7WJkNpief_LzkH57VqyZE6Kzlp6HLIL5HlfN5eDk3id39r7fkY3wOjnR2QPTHHEIWAlP3a4GSInc-FZMRoz92wqla-td24wV4GF_WVDZd5bpb2iYOWaHSATaKiaVs73dBy4twdUhBM20RAfrKpeh1QnaxvnRzYC6YdKHu3xoVX0ItXW4h0sGH2ZrfkuV293cI0PklY67ANMsVT-CjvQHaWc-B_BGuXwVSpKHtcKOEkWdMIgAISGByI4QvbvhrNdmLsJBmA8lORTaVKqof9Vd_Dy7v5cb3NJnkN92A-EQiBbdEyOMdoVxLZ1fJdcftluyPaoF7EKREeHdBnAhubX52dSZ-HIXbQSkKjWwbmkw77_GSGlsob2SiNj_Uj3cf9uXoReI3Z7r6IT5akj5L2FMCs_qWmiPj7683N1zpK4rHAPUlIFokX3qS4qd4hi3QCP_L9A4AGw3G67kgMyyR3tfZZtNR_xV5GoFGlGlN-N2Jbabi7u5YKQc2M2MfU-jaf13cykPG6dR-yJMq8AG4N36RgkBIRW_GC0bkYWuEari7Pl43F2IhCcNz3hNOMxFZGa-v-1Geu7i5TXE3TX2zEXdm2jwNjIH2faYIhzABXLmh9S7X24-gCR3c8xXJbZJNuXs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/show/picture/delete/28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"show",
+						"picture",
+						"delete",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11 Api-Get-Cuadro-Listar X Tienda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZDlmMjgxZDMwNzk3YzRjOWVjNmQzYzRhYmFkZTg4ZDEzZDk2Y2I3NjYxMjEyZDgxZjcxNDJhYmRhYWVkZWQ1OWY2ZDBhMjg5ZTBhN2ZjZGYiLCJpYXQiOjE2MzY3NTU2MjEuODQ1MDkxLCJuYmYiOjE2MzY3NTU2MjEuODQ1MDk2LCJleHAiOjE2NjgyOTE2MjEuODM5MDY3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gqiMGsvga11s7AZ9x0RpQ1Y_41E16_n9VaBUUuJIh06OUZ79OgcEuLG0tTN6z6V6AyRNeyJ49Vlvx_7gUcZ5bcqrt0wW3QK5xYsV9GcbVmH_Z-q55vaj7-xY9N_w-0EUQ7ejmYrGUC4qNA6i2Pql6hE8LbVgo8luZ8mUf4K8gJjxU-lgh3b58U62witWJ_t_yaYhhqjiDkIJLObgZAO7D3A2dASRoSdu1bO7eM3s_S3L6fv1qmJ_jTuyYsOYGihVmDkB0n-Xt1LmlNSk7C5T3cwIoYF_xytpLD-sLvgOc0MarsR3P0WDJX2sbULWptWgQPxY6pGoiTOAXxqeyJUkEMLfYGetUp2FNy0nNBkEoHW73JwoXJlmgq-u49XQgX_kXt3TOAVarPgCVaK_bHHT-2eoRuqYmufzrezY8OB0H9_TR0kZpLYlMTcctme03HU1Fz7VPCEODc2lXoqjdRliRIzqoswgZn0rXcNiS9de09WZmc4w2J9XvBe1bbLD1V7J2jiNsyLBCTqDCYV0BDx1f93NwHpO-o1ez05zXh_ZPeGGA4Ym5Hh12c-0JsRekO0qh0_BvBvZPlL2pA6tq4rJZHeqxLNiZStntgmYE9T04KfndzBZoi3lcvw0ASybop0jJgMLOcW2picoIsU553szN8wgxvRNvzVnKeVIxItQZZs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/3/pictures/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"3",
+						"pictures",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12 Api-Delete-Cuadro-Quemar Tienda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZDlmMjgxZDMwNzk3YzRjOWVjNmQzYzRhYmFkZTg4ZDEzZDk2Y2I3NjYxMjEyZDgxZjcxNDJhYmRhYWVkZWQ1OWY2ZDBhMjg5ZTBhN2ZjZGYiLCJpYXQiOjE2MzY3NTU2MjEuODQ1MDkxLCJuYmYiOjE2MzY3NTU2MjEuODQ1MDk2LCJleHAiOjE2NjgyOTE2MjEuODM5MDY3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gqiMGsvga11s7AZ9x0RpQ1Y_41E16_n9VaBUUuJIh06OUZ79OgcEuLG0tTN6z6V6AyRNeyJ49Vlvx_7gUcZ5bcqrt0wW3QK5xYsV9GcbVmH_Z-q55vaj7-xY9N_w-0EUQ7ejmYrGUC4qNA6i2Pql6hE8LbVgo8luZ8mUf4K8gJjxU-lgh3b58U62witWJ_t_yaYhhqjiDkIJLObgZAO7D3A2dASRoSdu1bO7eM3s_S3L6fv1qmJ_jTuyYsOYGihVmDkB0n-Xt1LmlNSk7C5T3cwIoYF_xytpLD-sLvgOc0MarsR3P0WDJX2sbULWptWgQPxY6pGoiTOAXxqeyJUkEMLfYGetUp2FNy0nNBkEoHW73JwoXJlmgq-u49XQgX_kXt3TOAVarPgCVaK_bHHT-2eoRuqYmufzrezY8OB0H9_TR0kZpLYlMTcctme03HU1Fz7VPCEODc2lXoqjdRliRIzqoswgZn0rXcNiS9de09WZmc4w2J9XvBe1bbLD1V7J2jiNsyLBCTqDCYV0BDx1f93NwHpO-o1ez05zXh_ZPeGGA4Ym5Hh12c-0JsRekO0qh0_BvBvZPlL2pA6tq4rJZHeqxLNiZStntgmYE9T04KfndzBZoi3lcvw0ASybop0jJgMLOcW2picoIsU553szN8wgxvRNvzVnKeVIxItQZZs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/shops/1/pictures",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shops",
+						"1",
+						"pictures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13 Api-Get-Cuadros-Listar Todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZDlmMjgxZDMwNzk3YzRjOWVjNmQzYzRhYmFkZTg4ZDEzZDk2Y2I3NjYxMjEyZDgxZjcxNDJhYmRhYWVkZWQ1OWY2ZDBhMjg5ZTBhN2ZjZGYiLCJpYXQiOjE2MzY3NTU2MjEuODQ1MDkxLCJuYmYiOjE2MzY3NTU2MjEuODQ1MDk2LCJleHAiOjE2NjgyOTE2MjEuODM5MDY3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.gqiMGsvga11s7AZ9x0RpQ1Y_41E16_n9VaBUUuJIh06OUZ79OgcEuLG0tTN6z6V6AyRNeyJ49Vlvx_7gUcZ5bcqrt0wW3QK5xYsV9GcbVmH_Z-q55vaj7-xY9N_w-0EUQ7ejmYrGUC4qNA6i2Pql6hE8LbVgo8luZ8mUf4K8gJjxU-lgh3b58U62witWJ_t_yaYhhqjiDkIJLObgZAO7D3A2dASRoSdu1bO7eM3s_S3L6fv1qmJ_jTuyYsOYGihVmDkB0n-Xt1LmlNSk7C5T3cwIoYF_xytpLD-sLvgOc0MarsR3P0WDJX2sbULWptWgQPxY6pGoiTOAXxqeyJUkEMLfYGetUp2FNy0nNBkEoHW73JwoXJlmgq-u49XQgX_kXt3TOAVarPgCVaK_bHHT-2eoRuqYmufzrezY8OB0H9_TR0kZpLYlMTcctme03HU1Fz7VPCEODc2lXoqjdRliRIzqoswgZn0rXcNiS9de09WZmc4w2J9XvBe1bbLD1V7J2jiNsyLBCTqDCYV0BDx1f93NwHpO-o1ez05zXh_ZPeGGA4Ym5Hh12c-0JsRekO0qh0_BvBvZPlL2pA6tq4rJZHeqxLNiZStntgmYE9T04KfndzBZoi3lcvw0ASybop0jJgMLOcW2picoIsU553szN8wgxvRNvzVnKeVIxItQZZs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/show/picture/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"show",
+						"picture",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "99 Api-Pruebas M .",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZmMyMmE5ODE4MzhjZTJjMWQxNWI5ZTYxNjk4OGI2YjU5MjYyY2M3Yjg3Yzc1ZmJkZDE5ZDA5ZGVhOWMwYTc3NzZlMzEzMTUwZTRlNzA2YTkiLCJpYXQiOjE2MzYwMDA1NDUuODgwMDUzLCJuYmYiOjE2MzYwMDA1NDUuODgwMDU4LCJleHAiOjE2Njc1MzY1NDUuODY1NjMyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.RwEtj9Kz8u0R_zQ2NKBf5KGqqR3x8CGuF3bhM8wfvf-pGvBH7YDV80-DLqFZw2abLUuwYEo2DoIkYw9Ac_GHgvhyF7jGPBW5PrvVPYvUZVPac3ocp5mOHPVnNZ9x8NBleQDME1QK6hLdRt0c9gNXSrxob5ahkJ9VM1M5tnXPtXYqvDB8yaDSScyTrLugv7ogL5yRcEEsQwNmUbi7SeDYzkDbmNRu_dxeozUfPaLS-c8FQ90zZsJu5MPeJs319CWI2tcyRsKvFZYzKgPlXr3MmPuHtyw-uGHLLb-KC6MhAZjTEcpANzVldljetJ6UpHaq8gmr3pB2AOuraeXNERidOWliL5FvLJV1bDYeiDF9LlSMDIO_uZ14w-cje_xpY2JQcklp7e7CICXNnLJ3FS62mS3_3oCRHWYVaTOa2RcC4UNONVeZFtTyjRji7x-qUamrA3oSiUOjK4Jow_i-f6jNsi1Qc4ptyf7xIXm90jpELseOriu4RcpXXgnEVL0K16mxIuuk17mTg9V-RTa9MbmOm08Ntu2pJpOlRblFJLKnl5xGwGAwnaIvmjeqUnK5SWhOx51co0pIkedS5OO4bYzKNDAKoCdElRJuBBHU25ov9beohMZdiVckuWqUmDftVf2D2phMDSm76NRwGYQtHsWnPF-qitaso1PkHLbc0nA0j8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pruebas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pruebas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Web-Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.12/m1401/public/index.php",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"12"
+					],
+					"path": [
+						"m1401",
+						"public",
+						"index.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

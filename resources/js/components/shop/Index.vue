@@ -34,23 +34,17 @@
                         </td>
             
                         <td>
-                            <!-- <a href='#' class='btn btn-success'>Show</a> -->
-                            Show
+                            <router-link class="btn btn-success" :to='{name: "ShowShop", params: {id: shop.id}}'>Detail</router-link>
                         </td>
             
                         <td>
-                            <!-- <a href='#' class='btn btn-info'>Edit</a> -->
-                            Edit
+                            <router-link class="btn btn-info" :to='{name: "EditShop", params: {id: shop.id}}'>Edit</router-link>
                         </td>
             
                         <td>
-                            Delete
-                            <!-- <a href='#' class='btn btn-info'>Delete</a>
-                            {{-- <form method="POST" action="{{route("team.destroy", $itemG->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            </form> --}} -->
+                            <form v-on:submit.prevent="deleteShop( shop.id  )">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
 
@@ -68,7 +62,7 @@ export default{
 
     data(){
         return {
-            shops: [
+            shops: {
             // {
             //     id: 1,
             //     name: 'Galeria 1',
@@ -80,20 +74,8 @@ export default{
             //     name: 'Galeria 2',
             //     address: 'bcn2',
             //     max_capacity: '22'
-            // },
-            // {
-            //     id: 3,
-            //     name: 'Galeria 3',
-            //     address: 'bcn3',
-            //     max_capacity: '23'
-            // },
-            // {
-            //     id: 4,
-            //     name: 'Galeria 4',
-            //     address: 'bcn4',
-            //     max_capacity: '24'
             // }
-            ]
+            }
         }
     },
     mounted() {
@@ -102,9 +84,6 @@ export default{
         this.showShops();
     },
     methods: {
-       deleteProduct(productId) {
-           alert (productId);
-       },
         showShops() {
             // console.log(this.product, ':D');
             console.log('Entra en show products :D');
@@ -115,10 +94,28 @@ export default{
             };
             //llamada a la api para añadir datos
             axios.get('/api/shops/').then((response) => {
-            // axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
                   //evento al array de datos
-                  console.log(response.data)
-                  this.shops = response.data.shops
+                  console.log(response.data) //mostrar info retornada.
+                  this.shops = response.data.shops //listar galerias
+            })
+        },
+        deleteShop( delId ) {
+            // console.log(this.product, ':D');
+            console.log('Borrado shop :-D' + delId);
+            
+            var urlSend = '/api/shops/delete/' + delId ;
+            console.log("url: " + urlSend );
+
+            //añadir token a la peticion
+            axios.defaults.headers.common = {
+                 Authorization: "Bearer " + localStorage.getItem("LoginToken")
+            };
+            //llamada a la api para añadir datos
+            axios.post(urlSend).then((response) => {
+
+                console.log(response.data.shops); //mostrar info retornada.
+
+                this.shops = response.data.shops //actuliar las galerias
             })
         }
     }
